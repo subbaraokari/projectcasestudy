@@ -1,0 +1,5 @@
+package org.simplilearn.repositories;
+
+public interface PassportRepository {
+
+}

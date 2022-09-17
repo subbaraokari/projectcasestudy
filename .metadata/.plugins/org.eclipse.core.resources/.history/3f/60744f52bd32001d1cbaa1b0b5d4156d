@@ -1,0 +1,5 @@
+package org.simplilearn.entities;
+
+public class Passport {
+
+}

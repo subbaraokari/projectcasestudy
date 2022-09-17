@@ -1,0 +1,10 @@
+package org.simplilearn.entities;
+
+import java.time.LocalDate;
+
+public class Passport {
+	private int id;
+	private String passportNumber;
+	private String name;
+	private LocalDate expiryDate;
+}

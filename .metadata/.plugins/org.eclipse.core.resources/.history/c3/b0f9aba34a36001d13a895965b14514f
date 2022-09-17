@@ -1,0 +1,27 @@
+package org.ksr;
+
+import java.util.Scanner;
+
+public class LinearSearch {
+
+	public static void main(String[] args) {
+		int i,n,searchValue,index;
+		int a[]=new int[100];
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number of elements");
+		n=sc.nextInt();
+		System.out.println("enter the number of elements");
+		for(i=0;i<n;i++) {
+			a[i]=sc.nextInt();
+		}
+		System.out.println("Enter the search value");
+		searchValue=sc.nextInt();
+		search(a,n,searchValue);
+	}
+
+	private static int search(int[] a, int n, int searchValue) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

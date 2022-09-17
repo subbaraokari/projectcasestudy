@@ -1,0 +1,5 @@
+package org.simplilearn.exceptions;
+
+public class EmployeeNotFoundException {
+
+}

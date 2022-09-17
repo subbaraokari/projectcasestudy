@@ -1,0 +1,62 @@
+package com.lockedme;
+
+import java.io.File;
+
+public class LockedMeBO {
+	public void displayFilesInAscendingOrder(String directoryPath) {
+		try {
+			File f = new File(directoryPath);
+			File files[] = f.listFiles();
+			for (File fileEntry : files) {
+				if (fileEntry.isFile())
+					System.out.println(fileEntry.getName());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void addFile(String fileName, String directoryPath) {
+		try {
+			File directory = new File(directoryPath);
+			if (directory.isDirectory()) {
+				File f = new File(directoryPath + "/" + fileName);
+				if (!f.exists()) {
+					f.createNewFile();
+				}
+				else
+				{
+					System.out.println("File allready existed");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteFile(String fileName, String directoryPath) {
+		boolean isDeleted=false;
+		try {
+			File f = new File(directoryPath);
+			File files[] = f.listFiles();
+			for (File fileEntry : files) {
+				if(fileEntry.getName().equals(fileName)) {
+					if(fileEntry.delete())
+						isDeleted=true;
+				}
+				else
+				{
+					System.out.println("File Not Found");
+				}
+			}
+			if(isDeleted)
+				System.out.println("File deleted Successfully");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void seachFile(String fileName, String directoryPath) {
+
+	}
+}

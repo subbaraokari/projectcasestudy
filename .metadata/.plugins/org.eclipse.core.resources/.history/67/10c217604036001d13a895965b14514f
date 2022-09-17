@@ -1,0 +1,19 @@
+package com.lockedme;
+
+public class LockedMeBO {
+	public void displayFilesInAscendingOrder(String directoryPath) {
+
+	}
+
+	public void addFile(String fileName, String directoryPath) {
+
+	}
+
+	public void deleteFile(String fileName, String directoryPath) {
+
+	}
+
+	public void seachFile(String fileName, String directoryPath) {
+
+	}
+}

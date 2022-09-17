@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static void readFileName(Scanner sc)&apos; from &apos;com.lockedme.Driver.main()&apos; to &apos;com.lockedme.Driver&apos;&#x0D;&#x0A;- Original project: &apos;FileManager&apos;&#x0D;&#x0A;- Method name: &apos;readFileName&apos;&#x0D;&#x0A;- Destination type: &apos;com.lockedme.Driver&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;readFileName&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;com.lockedme{Driver.java" name="readFileName" replace="false" selection="1016 87" stamp="1663389993699" version="1.0" visibility="2"/>
+</session>

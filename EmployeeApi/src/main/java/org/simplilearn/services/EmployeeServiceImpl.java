@@ -1,0 +1,77 @@
+package org.simplilearn.services;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.simplilearn.entities.Emp;
+import org.simplilearn.entities.Passport;
+import org.simplilearn.exceptions.EmployeeNotFoundException;
+import org.simplilearn.model.EmpRegistrationModel;
+import org.simplilearn.repositories.EmployeeRepository;
+import org.simplilearn.repositories.PassportRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+@Transactional
+public class EmployeeServiceImpl implements EmployeeService {
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	@Autowired
+	private PassportRepository passportRepository;
+	
+
+	@Override
+	public void deleteEmployee(int eno) {
+		employeeRepository.deleteById(eno);
+	}
+
+	@Override
+	public List<Emp> getEmployees() {
+		return employeeRepository.findAll();
+	}
+
+	@Override
+	public Emp getEmployee(int eno) throws EmployeeNotFoundException {
+		return employeeRepository.findById(eno).orElseThrow(()->new EmployeeNotFoundException("Employee Not Found"));
+	}
+
+	@Override
+	public void updateEmployee(int eno, Emp e) throws EmployeeNotFoundException {
+		Emp emp=employeeRepository.findById(eno).orElseThrow(()->new EmployeeNotFoundException("Employee Not Found"));
+		emp.setName(e.getName());
+		emp.setAddress(e.getAddress());
+		emp.setDateOfJoin(e.getDateOfJoin());
+		employeeRepository.save(emp);
+		
+	}
+
+	@Override
+	public void insertEmployee(EmpRegistrationModel emp) {
+		Emp e=new Emp();
+		e.setName(emp.getName());
+		e.setAddress(emp.getAddress());
+		e.setDateOfJoin(emp.getDateOfJoin());
+		Passport p=new Passport();
+		p.setName(emp.getName());
+		p.setPassportNumber(emp.getPassportNumber());
+		p.setExpiryDate(emp.getExpiryDate());
+		e.setPassport(p);
+		employeeRepository.save(e);
+		passportRepository.save(p);
+	}
+
+}
+
+/*Presenting the specification document which has the product’s capabilities, appearance, and user interactions
+● Setting up Git and GitHub account to store and track your enhancements of the prototype 
+● Explaining the Java concepts used in the project 
+● Discussing the generic features of the product:
+● There will be an admin to manage the website. An administrator login will be required to access the admin page. 
+ 
+The admin should be able to change his password if he wants, he should be able to:
+● Manage the products in the store including categorizing them
+● Browse the list of users who have signed up and be able to search users
+● See purchase reports filtered by date and category
+*/

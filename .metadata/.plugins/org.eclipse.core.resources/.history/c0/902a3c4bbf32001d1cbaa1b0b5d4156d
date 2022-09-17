@@ -1,0 +1,61 @@
+package org.simplilearn.services;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.simplilearn.entities.Emp;
+import org.simplilearn.entities.Passport;
+import org.simplilearn.exceptions.EmployeeNotFoundException;
+import org.simplilearn.model.EmpRegistrationModel;
+import org.simplilearn.repositories.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+@Transactional
+public class EmployeeServiceImpl implements EmployeeService {
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+
+	@Override
+	public void deleteEmployee(int eno) {
+		employeeRepository.deleteById(eno);
+	}
+
+	@Override
+	public List<Emp> getEmployees() {
+		return employeeRepository.findAll();
+	}
+
+	@Override
+	public Emp getEmployee(int eno) throws EmployeeNotFoundException {
+		return employeeRepository.findById(eno).orElseThrow(()->new EmployeeNotFoundException("Employee Not Found"));
+	}
+
+	@Override
+	public void updateEmployee(int eno, Emp e) throws EmployeeNotFoundException {
+		Emp emp=employeeRepository.findById(eno).orElseThrow(()->new EmployeeNotFoundException("Employee Not Found"));
+		emp.setName(e.getName());
+		emp.setAddress(e.getAddress());
+		emp.setDateOfJoin(e.getDateOfJoin());
+		employeeRepository.save(emp);
+		
+	}
+
+	@Override
+	public void insertEmployee(EmpRegistrationModel emp) {
+		Emp e=new Emp();
+		e.setName(emp.getName());
+		e.setAddress(emp.getAddress());
+		e.setDateOfJoin(emp.getDateOfJoin());
+		Passport p=new Passport();
+		p.setName(emp.getName());
+		p.setPassportNumber(emp.getPassportNumber());
+		p.setExpiryDate(emp.getExpiryDate());
+		e.setPassport(p);
+	
+	}
+
+}

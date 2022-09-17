@@ -1,0 +1,5 @@
+package org.simplilearn.model;
+
+public class EmpRegistrationModel {
+
+}

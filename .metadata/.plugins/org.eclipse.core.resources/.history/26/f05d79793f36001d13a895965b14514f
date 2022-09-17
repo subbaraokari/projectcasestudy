@@ -1,0 +1,25 @@
+package com.lockedme;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		final String ROOT_DIRECTORY_PATH="d:/java";		
+		LockedMeBO bo=new LockedMeBO();
+		System.out.println("Welcome to LockedMe.com");
+		System.out.println("Developer Info");
+		System.out.println("Mr.Rao-Consultant");
+		int ch;
+		do
+		{
+			System.out.println("1.List Files in Ascending order");
+			System.out.println("2.Edit");
+			System.out.println("3.exit");
+			switch(ch)
+			{
+			case 1:
+				bo.displayFilesInAscendingOrder(ROOT_DIRECTORY_PATH);
+			}
+		}while(ch<3)
+	}
+
+}

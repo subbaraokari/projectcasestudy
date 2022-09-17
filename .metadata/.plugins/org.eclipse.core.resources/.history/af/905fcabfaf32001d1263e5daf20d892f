@@ -1,0 +1,22 @@
+package org.simplilearn.controllers;
+
+import org.simplilearn.entities.Emp;
+import org.simplilearn.services.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+//http://localhost:9022/employeeapi/employees
+@Controller
+@RequestMapping("/employeeapi")
+public class EmployeeController {
+	@Autowired
+	private EmployeeService employeeService;
+	@PostMapping("/employees")
+	public ResponseEntity<String> insertEmployee(@RequestBody Emp e)
+	{
+		employeeService.insertEmployee(e);
+	}
+}

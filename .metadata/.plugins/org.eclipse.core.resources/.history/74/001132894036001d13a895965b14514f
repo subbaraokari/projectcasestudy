@@ -1,0 +1,25 @@
+package com.lockedme;
+
+import java.io.File;
+
+public class LockedMeBO {
+	public void displayFilesInAscendingOrder(String directoryPath) {
+		try {
+			File f=new File(directoryPath);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	public void addFile(String fileName, String directoryPath) {
+
+	}
+
+	public void deleteFile(String fileName, String directoryPath) {
+
+	}
+
+	public void seachFile(String fileName, String directoryPath) {
+
+	}
+}
